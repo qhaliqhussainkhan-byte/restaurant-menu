@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Najma Sabahiya - Menu</title>
+    <style>
+        :root {
+            --primary-color: #9a3346; /* Burgundy */
+            --secondary-color: #333;
+            --light-bg: #f9f5f2;
+            --text-color: #222;
+            --desc-color: #555;
+            --border-color: #e0d0cc;
+            --accent-color: #7a2938;
+            --highlight-bg: #fff5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            width: 210mm; /* A4 width */
+            height: 297mm; /* A4 height */
+            margin: 0 auto;
+            padding: 2mm 3mm; /* REDUCED PADDING */
+            background: white;
+            color: var(--text-color);
+            line-height: 1.2;
+            position: relative;
+        }
+
+        /* MAIN CONTAINER WITH 3 COLUMNS */
+        .menu-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2mm; /* REDUCED GAP */
+            height: 293mm; /* Adjusted height */
+            align-content: start;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* HEADER - COMPACT */
+        .header {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-bottom: 1mm; /* REDUCED */
+            padding-bottom: 0.5mm; /* REDUCED */
+            border-bottom: 1.5mm solid var(--primary-color); /* REDUCED */
+            position: relative;
+        }
+
+        .restaurant-name {
+            font-size: 22pt; /* REDUCED */
+            font-weight: 900;
+            color: var(--primary-color);
+            letter-spacing: 1pt; /* REDUCED */
+            margin-bottom: 0.3mm; /* REDUCED */
+            text-transform: uppercase;
+            position: relative;
+            display: block;
+            background: white;
+            top: 4mm; /* REDUCED */
+            z-index: 2;
+            line-height: 1;
+        }
+
+        .contact-bar {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5mm 0; /* REDUCED */
+            font-size: 7.5pt; /* REDUCED */
+            font-weight: 700;
+            letter-spacing: 0.3pt; /* REDUCED */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: -0.5mm; /* ADJUSTED */
+            position: relative;
+        }
+
+        .contact-left, .contact-right {
+            font-size: 7.5pt; /* REDUCED */
+        }
+
+        /* SECTION STYLING - ULTRA COMPACT */
+        .section {
+            margin-bottom: 1.2mm; /* REDUCED */
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+
+        .section-title {
+            font-size: 9pt; /* REDUCED */
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 0.8mm; /* REDUCED */
+            padding: 0.6mm 0; /* REDUCED */
+            border-bottom: 1pt solid var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 0.2pt; /* REDUCED */
+            background: linear-gradient(to right, transparent 95%, var(--primary-color) 95%);
+        }
+
+        /* ITEM STYLING - EXTREMELY COMPACT */
+        .item {
+            margin-bottom: 0.4mm; /* REDUCED */
+            padding: 0.3mm 0; /* REDUCED */
+            position: relative;
+        }
+
+        .item-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 0.6mm; /* REDUCED */
+            align-items: baseline;
+        }
+
+        .item-name {
+            font-size: 7.2pt; /* REDUCED */
+            font-weight: 700;
+            color: var(--text-color);
+            line-height: 1;
+        }
+
+        .item-price {
+            font-size: 7.2pt; /* REDUCED */
+            font-weight: 800;
+            color: var(--primary-color);
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .item-price::after {
+            content: " SR";
+            font-size: 6.5pt; /* REDUCED */
+            color: #888;
+            margin-left: 0.3mm; /* REDUCED */
+        }
+
+        .item-kcal {
+            font-size: 6.8pt; /* REDUCED */
+            font-weight: 600;
+            color: #666;
+            text-align: right;
+            font-style: italic;
+            white-space: nowrap;
+        }
+
+        .item-description {
+            font-size: 6.8pt; /* REDUCED */
+            color: var(--desc-color);
+            font-style: italic;
+            margin-top: 0.2mm; /* REDUCED */
+            padding-left: 0.8mm; /* REDUCED */
+            line-height: 1;
+            border-left: 0.5pt solid #eee;
+        }
+
+        /* BOX STYLING - COMPACT */
+        .box {
+            border: 0.8pt solid var(--border-color); /* REDUCED */
+            border-radius: 1.5pt; /* REDUCED */
+            padding: 1mm; /* REDUCED */
+            margin: 1mm 0; /* REDUCED */
+            background: var(--highlight-bg);
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+
+        .box-title {
+            font-size: 8.2pt; /* REDUCED */
+            font-weight: 800;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 0.6mm; /* REDUCED */
+            padding-bottom: 0.4mm; /* REDUCED */
+            border-bottom: 0.8pt solid var(--border-color); /* REDUCED */
+            text-transform: uppercase;
+        }
+
+        .box-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(30mm, 1fr)); /* ADJUSTED */
+            gap: 0.4mm; /* REDUCED */
+            font-size: 6.8pt; /* REDUCED */
+        }
+
+        .box-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 0.6mm; /* REDUCED */
+            align-items: baseline;
+            padding: 0.2mm 0; /* REDUCED */
+        }
+
+        .box-item-name {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .box-item-price {
+            font-weight: 700;
+            color: var(--primary-color);
+            text-align: right;
+            min-width: 6mm; /* REDUCED */
+        }
+
+        .box-item-price::after {
+            content: " SR";
+            font-size: 6.2pt; /* REDUCED */
+            color: #888;
+        }
+
+        /* DRINKS SPECIAL */
+        .drinks-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.6mm; /* REDUCED */
+            margin-top: 0.6mm; /* REDUCED */
+        }
+
+        .drink-item {
+            background: var(--light-bg);
+            padding: 0.6mm; /* REDUCED */
+            border-radius: 0.8pt; /* REDUCED */
+            font-size: 7pt; /* REDUCED */
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 0.8mm; /* REDUCED */
+        }
+
+        /* MANOUSHE ADD-ONS GRID - COMPACT */
+        .addons-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.4mm; /* REDUCED */
+            font-size: 6.5pt; /* REDUCED */
+        }
+
+        .addon-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 0.6mm; /* REDUCED */
+            padding: 0.2mm; /* REDUCED */
+        }
+
+        /* FOOTER - COMPACT */
+        .footer {
+            grid-column: 1 / -1;
+            margin-top: 2mm; /* REDUCED */
+            padding-top: 1mm; /* REDUCED */
+            border-top: 0.8pt solid var(--border-color); /* REDUCED */
+            font-size: 6.8pt; /* REDUCED */
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1mm; /* REDUCED */
+            color: var(--secondary-color);
+        }
+
+        .footer-section {
+            text-align: center;
+            padding: 0 0.5mm; /* REDUCED */
+        }
+
+        .footer-title {
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 0.3mm; /* REDUCED */
+            font-size: 7pt; /* REDUCED */
+        }
+
+        .footer-info {
+            font-weight: 600;
+            font-size: 6.8pt; /* ADDED */
+        }
+
+        /* PRINT OPTIMIZATION - FINE-TUNED */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 2mm; /* MINIMAL MARGINS */
+            }
+            
+            body {
+                padding: 1mm 2mm; /* MINIMAL PADDING */
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                width: 206mm; /* Account for print margins */
+                height: 293mm;
+            }
+            
+            .menu-container {
+                gap: 1.5mm; /* MINIMAL GAP */
+                height: 291mm; /* Maximize space */
+            }
+            
+            .item-name, .item-price {
+                font-size: 7pt; /* OPTIMIZED FOR PRINT */
+            }
+            
+            .item-kcal, .item-description {
+                font-size: 6.5pt; /* OPTIMIZED FOR PRINT */
+            }
+            
+            .section-title {
+                font-size: 8.5pt; /* OPTIMIZED FOR PRINT */
+            }
+            
+            .restaurant-name {
+                font-size: 20pt; /* OPTIMIZED FOR PRINT */
+            }
+            
+            /* REMOVE ALL SPACERS AND UNNECESSARY MARGINS */
+            .section + .section {
+                margin-top: 0.8mm; /* MINIMAL */
+            }
+        }
+
+        /* COLUMN SPECIFIC STYLING - COMPACT */
+        .column:nth-child(1) {
+            border-right: 0.5pt dashed #f0f0f0; /* REDUCED */
+            padding-right: 1.5mm; /* REDUCED */
+        }
+        
+        .column:nth-child(2) {
+            border-right: 0.5pt dashed #f0f0f0; /* REDUCED */
+            padding: 0 1.5mm; /* REDUCED */
+        }
+        
+        .column:nth-child(3) {
+            padding-left: 1.5mm; /* REDUCED */
+        }
+
+        /* CATEGORY SPACING */
+        .section + .section {
+            margin-top: 0.8mm; /* REDUCED */
+        }
+
+        /* BULLET FOR ITEMS */
+        .item::before {
+            content: "•";
+            color: var(--primary-color);
+            position: absolute;
+            left: -1.5mm; /* ADJUSTED */
+            font-size: 5pt; /* REDUCED */
+        }
+
+        /* HIGHLIGHT FOR POPULAR ITEMS - LIGHT */
+        .item-popular {
+            background: linear-gradient(90deg, #fff5f5 0%, transparent 100%);
+            padding: 0.4mm 0.6mm; /* REDUCED */
+            border-radius: 0.8pt; /* REDUCED */
+            margin-left: -0.8mm; /* REDUCED */
+        }
+
+        /* SECTION DIVIDER */
+        .section-divider {
+            height: 0.3mm; /* REDUCED */
+            background: linear-gradient(90deg, var(--primary-color) 0%, transparent 100%);
+            margin: 1mm 0 0.8mm; /* REDUCED */
+        }
+
+        /* COMPRESS MULTI-LINE DESCRIPTIONS */
+        .multi-line-desc {
+            line-height: 1 !important;
+            margin-top: 0.1mm !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        
+        <!-- ULTRA-COMPACT HEADER -->
+        <div class="header">
+            <div class="restaurant-name">Najma Sabahiya</div>
+            <div class="contact-bar">
+                <span class="contact-left">@najmasabahiya</span>
+                <span class="contact-right">www.najmasabahiya.com</span>
+            </div>
+        </div>
+
+        <!-- COLUMN 1 - EXTREMELY COMPACT -->
+        <div class="column">
+            
+            <!-- BREAKFAST WRAPS -->
+            <div class="section">
+                <div class="section-title">Breakfast Wraps</div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Lebanese Zaatar</span>
+                        <span class="item-price">6</span>
+                        <span class="item-kcal">263</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Jordanian Zaatar</span>
+                        <span class="item-price">8</span>
+                        <span class="item-kcal">229</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Kechek</span>
+                        <span class="item-price">12</span>
+                        <span class="item-kcal">256</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Akkawi Cheese</span>
+                        <span class="item-price">13</span>
+                        <span class="item-kcal">257</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Akkawi & Zaatar</span>
+                        <span class="item-price">12</span>
+                        <span class="item-kcal">205</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Halloum Cheese</span>
+                        <span class="item-price">12</span>
+                        <span class="item-kcal">218</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Grilled Halloumi</span>
+                        <span class="item-price">13</span>
+                        <span class="item-kcal">242</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Rocca Halloum</span>
+                        <span class="item-price">14</span>
+                        <span class="item-kcal">231</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Bulgarian Cheese</span>
+                        <span class="item-price">12</span>
+                        <span class="item-kcal">288</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Kashkaval Cheese</span>
+                        <span class="item-price">12</span>
+                        <span class="item-kcal">191</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Mozarella Cheese</span>
+                        <span class="item-price">12</span>
+                        <span class="item-kcal">214</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Cocktail Cheese</span>
+                        <span class="item-price">14</span>
+                        <span class="item-kcal">235</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Four Cheese</span>
+                        <span class="item-price">15</span>
+                        <span class="item-kcal">202</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Labneh</span>
+                        <span class="item-price">10</span>
+                        <span class="item-kcal">248</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Labneh & Zaatar</span>
+                        <span class="item-price">12</span>
+                        <span class="item-kcal">209</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Goat Labneh</span>
+                        <span class="item-price">18</span>
+                        <span class="item-kcal">227</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Omelette</span>
+                        <span class="item-price">12</span>
+                        <span class="item-kcal">265</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Omelette & Labneh</span>
+                        <span class="item-price">14</span>
+                        <span class="item-kcal">198</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Vegetable Platter</span>
+                        <span class="item-price">12</span>
+                        <span class="item-kcal">220</span>
+                    </div>
+                    <div class="item-description">Cherry Tomatoes, cucumber, mint, olives</div>
+                </div>
+            </div>
+
+            <!-- BREAKFAST CUSTOMIZATION -->
+            <div class="box">
+                <div class="box-title">Breakfast Customization</div>
+                <div class="box-grid">
+                    <div class="box-item">
+                        <span class="box-item-name">Add Brown Saj</span>
+                        <span class="box-item-price">237</span>
+                    </div>
+                    <div class="box-item">
+                        <span class="box-item-name">Add White Saj</span>
+                        <span class="box-item-price">211</span>
+                    </div>
+                    <div class="box-item">
+                        <span class="box-item-name">Add Vegetables</span>
+                        <span class="box-item-price">259</span>
+                    </div>
+                    <div class="box-item">
+                        <span class="box-item-name">Add Extra Cheese</span>
+                        <span class="box-item-price">244</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SWEET WRAPS -->
+            <div class="section">
+                <div class="section-title">Sweet Wraps</div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Chocolate</span>
+                        <span class="item-price">12</span>
+                        <span class="item-kcal">150</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">White & Chocolate</span>
+                        <span class="item-price">14</span>
+                        <span class="item-kcal">252</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Biscuit</span>
+                        <span class="item-price">12</span>
+                        <span class="item-kcal">222</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- APPETIZERS -->
+            <div class="section">
+                <div class="section-title">Appetizers</div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">French Fries</span>
+                        <span class="item-price">10</span>
+                        <span class="item-kcal">270</span>
+                    </div>
+                    <div class="item-description">Served with ketchup</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Curly Fries</span>
+                        <span class="item-price">12</span>
+                        <span class="item-kcal">196</span>
+                    </div>
+                    <div class="item-description">Served with ketchup</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">French Fries Wrap</span>
+                        <span class="item-price">12</span>
+                        <span class="item-kcal">233</span>
+                    </div>
+                    <div class="item-description">Served with ketchup</div>
+                </div>
+                
+                <div class="item-description" style="font-weight: 700; margin-top: 0.1mm; border: none; font-size: 6.5pt;">
+                    + Add Dip: Cheddar, Honey Mustard, Cocktail, BBQ
+                </div>
+            </div>
+
+            <!-- FATAYER -->
+            <div class="section">
+                <div class="section-title">Fatayer</div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Fatayer Spinach</span>
+                        <span class="item-price">12</span>
+                        <span class="item-kcal">225</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Fatayer Spinach & Cheese</span>
+                        <span class="item-price">15</span>
+                        <span class="item-kcal">300</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Fatayer Spinach & Labneh</span>
+                        <span class="item-price">15</span>
+                        <span class="item-kcal">261</span>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- END COLUMN 1 -->
+
+        <!-- COLUMN 2 - EXTREMELY COMPACT -->
+        <div class="column">
+            
+            <!-- MEAT WRAPS -->
+            <div class="section">
+                <div class="section-title">Meat Wraps</div>
+                
+                <div class="item item-popular">
+                    <div class="item-row">
+                        <span class="item-name">Turkey & Cheese</span>
+                        <span class="item-price">18</span>
+                        <span class="item-kcal">301</span>
+                    </div>
+                    <div class="item-description multi-line-desc">Smoked turkey, cheese, lettuce, tomato, corn, pickles</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Mortadella & Cheese</span>
+                        <span class="item-price">16</span>
+                        <span class="item-kcal">316</span>
+                    </div>
+                    <div class="item-description multi-line-desc">Mortadella, cheese, lettuce, tomato, corn, pickles</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Salami & Cheese</span>
+                        <span class="item-price">16</span>
+                        <span class="item-kcal">235</span>
+                    </div>
+                    <div class="item-description multi-line-desc">Salami, cheese, lettuce, tomato, corn, pickles</div>
+                </div>
+                
+                <div class="item item-popular">
+                    <div class="item-row">
+                        <span class="item-name">Submarine & Cheese</span>
+                        <span class="item-price">22</span>
+                        <span class="item-kcal">300</span>
+                    </div>
+                    <div class="item-description multi-line-desc">Turkey, salami, mortadella, cheese, veg, mayo</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Hotdog & Cheese</span>
+                        <span class="item-price">16</span>
+                        <span class="item-kcal">254</span>
+                    </div>
+                    <div class="item-description multi-line-desc">Frankfurter, cheese, coleslaw, corn, pickles</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Roast Beef & Cheese</span>
+                        <span class="item-price">22</span>
+                        <span class="item-kcal">208</span>
+                    </div>
+                    <div class="item-description multi-line-desc">Roast beef, cheese, lettuce, tomato, corn, pickles</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Tuna</span>
+                        <span class="item-price">18</span>
+                        <span class="item-kcal">226</span>
+                    </div>
+                    <div class="item-description multi-line-desc">Prime tuna, lettuce, corn, pickles, lemon, mayo</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Kafta</span>
+                        <span class="item-price">18</span>
+                        <span class="item-kcal">241</span>
+                    </div>
+                    <div class="item-description multi-line-desc">Mix of beef and lamb meat, onions, parsley, spices</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Soujok</span>
+                        <span class="item-price">18</span>
+                        <span class="item-kcal">213</span>
+                    </div>
+                    <div class="item-description multi-line-desc">Minced meat, garlic, spices, lettuce, tomato</div>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- CONTINUED MEAT WRAPS -->
+            <div class="section">
+                <div class="section-title">Meat Wraps (Cont.)</div>
+                
+                <div class="item item-popular">
+                    <div class="item-row">
+                        <span class="item-name">Hamburger w Jebneh</span>
+                        <span class="item-price">18</span>
+                        <span class="item-kcal">261</span>
+                    </div>
+                    <div class="item-description multi-line-desc">Beef patty, coleslaw, tomato, pickles, ketchup</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Chicken Burger</span>
+                        <span class="item-price">18</span>
+                        <span class="item-kcal">199</span>
+                    </div>
+                    <div class="item-description multi-line-desc">Chicken patty, cheese, coleslaw, pickles, ketchup</div>
+                </div>
+                
+                <div class="item item-popular">
+                    <div class="item-row">
+                        <span class="item-name">Crispy Chicken & Chz</span>
+                        <span class="item-price">20</span>
+                        <span class="item-kcal">230</span>
+                    </div>
+                    <div class="item-description multi-line-desc">Crispy chicken, coleslaw, corn, cheese, cocktail</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Chicken Fillet & Chz</span>
+                        <span class="item-price">20</span>
+                        <span class="item-kcal">247</span>
+                    </div>
+                    <div class="item-description multi-line-desc">Chicken fillet, cheese, lettuce, corn, pickles, mayo</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Fillet Supreme</span>
+                        <span class="item-price">24</span>
+                        <span class="item-kcal">227</span>
+                    </div>
+                    <div class="item-description multi-line-desc">Fillet, turkey, cheese, lettuce, corn, cheddar</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Chicken Rocca</span>
+                        <span class="item-price">22</span>
+                        <span class="item-kcal">225</span>
+                    </div>
+                    <div class="item-description multi-line-desc">Chicken fillet, cheese, rocca, corn, avocado</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Chicken Escalope</span>
+                        <span class="item-price">20</span>
+                        <span class="item-kcal">236</span>
+                    </div>
+                    <div class="item-description multi-line-desc">Escalope, cheese, coleslaw, corn, chips, pickles</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Chicken Fajita</span>
+                        <span class="item-price">22</span>
+                        <span class="item-kcal">200</span>
+                    </div>
+                    <div class="item-description multi-line-desc">Chicken, cheese, mushrooms, corn, peppers, avo</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Barbeque Chicken</span>
+                        <span class="item-price">20</span>
+                        <span class="item-kcal">215</span>
+                    </div>
+                    <div class="item-description multi-line-desc">Fried chicken, cheese, lettuce, corn, bbq sauce</div>
+                </div>
+                
+                <div class="item item-popular">
+                    <div class="item-row">
+                        <span class="item-name">Steak & Cheese</span>
+                        <span class="item-price">24</span>
+                        <span class="item-kcal">244</span>
+                    </div>
+                    <div class="item-description multi-line-desc">Tender beef, cheese, lettuce, tomato, bbq sauce</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Shish Tawook</span>
+                        <span class="item-price">20</span>
+                        <span class="item-kcal">230</span>
+                    </div>
+                    <div class="item-description multi-line-desc">Chicken breast, coleslaw, chips, garlic sauce</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Chicken Shawarma</span>
+                        <span class="item-price">20</span>
+                        <span class="item-kcal">218</span>
+                    </div>
+                    <div class="item-description multi-line-desc">Chicken slices, lettuce, chips, pickles, garlic sc</div>
+                </div>
+            </div>
+
+            <!-- MEAT EXTRAS & DOUBLES -->
+            <div class="box">
+                <div class="box-title">Meat Extras & Doubles</div>
+                <div class="box-grid">
+                    <div class="box-item">
+                        <span class="box-item-name">Dbl Chicken/Escalope</span>
+                        <span class="box-item-price">255</span>
+                    </div>
+                    <div class="box-item">
+                        <span class="box-item-name">Dbl BBQ/Crispy</span>
+                        <span class="box-item-price">238</span>
+                    </div>
+                    <div class="box-item">
+                        <span class="box-item-name">Double Steak</span>
+                        <span class="box-item-price">207</span>
+                    </div>
+                    <div class="box-item">
+                        <span class="box-item-name">Dbl Hamburger/Kafta</span>
+                        <span class="box-item-price">262</span>
+                    </div>
+                    <div class="box-item">
+                        <span class="box-item-name">Dbl Chk Burger</span>
+                        <span class="box-item-price">222</span>
+                    </div>
+                    <div class="box-item">
+                        <span class="box-item-name">Double Turkey</span>
+                        <span class="box-item-price">246</span>
+                    </div>
+                    <div class="box-item">
+                        <span class="box-item-name">Add Cheddar/Jalapeno</span>
+                        <span class="box-item-price"></span>
+                    </div>
+                    <div class="box-item">
+                        <span class="box-item-name">Add Chips / Dbl Hotdog</span>
+                        <span class="box-item-price"></span>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- END COLUMN 2 -->
+
+        <!-- COLUMN 3 - EXTREMELY COMPACT -->
+        <div class="column">
+            
+            <!-- HOT DOGS -->
+            <div class="section">
+                <div class="section-title">Hot Dogs</div>
+                
+                <div class="item item-popular">
+                    <div class="item-row">
+                        <span class="item-name">Chicago</span>
+                        <span class="item-price">18</span>
+                        <span class="item-kcal">200</span>
+                    </div>
+                    <div class="item-description multi-line-desc">Onions, corn, chips, mayo, mustard, ketchup</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Frankfurt</span>
+                        <span class="item-price">18</span>
+                        <span class="item-kcal">269</span>
+                    </div>
+                    <div class="item-description multi-line-desc">Coleslaw, cheddar cheese, corn, chips, mustard & ketchup</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">New York</span>
+                        <span class="item-price">20</span>
+                        <span class="item-kcal">245</span>
+                    </div>
+                    <div class="item-description multi-line-desc">Honey relish, cheddar cheese, seasoned onions, corn, chips, mayo, mustard & ketchup</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Mexico</span>
+                        <span class="item-price">20</span>
+                        <span class="item-kcal">258</span>
+                    </div>
+                    <div class="item-description multi-line-desc">Jalapenos, cheddar cheese, onions, corn, mayo, mustard & ketchup</div>
+                </div>
+            </div>
+
+            <!-- PIZZA -->
+            <div class="section">
+                <div class="section-title">Pizza</div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Pizza Vegetables</span>
+                        <span class="item-price">20</span>
+                        <span class="item-kcal">219</span>
+                    </div>
+                </div>
+                
+                <div class="item item-popular">
+                    <div class="item-row">
+                        <span class="item-name">Pizza Meat</span>
+                        <span class="item-price">25</span>
+                        <span class="item-kcal">236</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Pizza Margherita</span>
+                        <span class="item-price">20</span>
+                        <span class="item-kcal">202</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MANOUSHE -->
+            <div class="section">
+                <div class="section-title">Manoushe</div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Thyme</span>
+                        <span class="item-price">10</span>
+                        <span class="item-kcal">253</span>
+                    </div>
+                </div>
+                
+                <div class="item item-popular">
+                    <div class="item-row">
+                        <span class="item-name">Cheese & Thyme</span>
+                        <span class="item-price">15</span>
+                        <span class="item-kcal">192</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Thyme & Veg</span>
+                        <span class="item-price">15</span>
+                        <span class="item-kcal">221</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Cream Cheese</span>
+                        <span class="item-price">12</span>
+                        <span class="item-kcal">204</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Haloumi Cheese</span>
+                        <span class="item-price">12</span>
+                        <span class="item-kcal">258</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Kashkwan Cheese</span>
+                        <span class="item-price">15</span>
+                        <span class="item-kcal">248</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Plain</span>
+                        <span class="item-price">7.7</span>
+                        <span class="item-kcal">213</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Cheddar Cheese</span>
+                        <span class="item-price">15</span>
+                        <span class="item-kcal">237</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Akawi Cheese</span>
+                        <span class="item-price">15</span>
+                        <span class="item-kcal">254</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Mozerella Cheese</span>
+                        <span class="item-price">15</span>
+                        <span class="item-kcal">191</span>
+                    </div>
+                </div>
+                
+                <div class="item item-popular">
+                    <div class="item-row">
+                        <span class="item-name">Three Cheese</span>
+                        <span class="item-price">20</span>
+                        <span class="item-kcal">232</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Cheese & Sauce</span>
+                        <span class="item-price">14</span>
+                        <span class="item-kcal">269</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Akawi Aseel</span>
+                        <span class="item-price">17</span>
+                        <span class="item-kcal">205</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Akawi Jamjoomia</span>
+                        <span class="item-price">17</span>
+                        <span class="item-kcal">241</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Alfredo</span>
+                        <span class="item-price">20</span>
+                        <span class="item-kcal">239</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Sojok</span>
+                        <span class="item-price">15</span>
+                        <span class="item-kcal">247</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Sojok & Cheese</span>
+                        <span class="item-price">18</span>
+                        <span class="item-kcal">222</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Turkey & Cheese</span>
+                        <span class="item-price">15</span>
+                        <span class="item-kcal">255</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Peperoni & Cheese</span>
+                        <span class="item-price">19</span>
+                        <span class="item-kcal">222</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Meat</span>
+                        <span class="item-price">16</span>
+                        <span class="item-kcal">240</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Meat & Cheese</span>
+                        <span class="item-price">20</span>
+                        <span class="item-kcal">251</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Lebneh & Honey</span>
+                        <span class="item-price">15</span>
+                        <span class="item-kcal">209</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Lebneh / Veg</span>
+                        <span class="item-price">18</span>
+                        <span class="item-kcal">265</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Labneh & Thyme</span>
+                        <span class="item-price">17</span>
+                        <span class="item-kcal">194</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-row">
+                        <span class="item-name">Labneh & Cheese</span>
+                        <span class="item-price">14</span>
+                        <span class="item-kcal">266</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MANOUSHE ADD-ONS -->
+            <div class="box">
+                <div class="box-title">Manoushe Add-ons</div>
+                <div class="addons-grid">
+                    <div class="addon-item">
+                        <span>Mozzarella</span>
+                        <span>4 SR</span>
+                    </div>
+                    <div class="addon-item">
+                        <span>Akkawi</span>
+                        <span>4 SR</span>
+                    </div>
+                    <div class="addon-item">
+                        <span>Kashkawan</span>
+                        <span>4 SR</span>
+                    </div>
+                    <div class="addon-item">
+                        <span>Cheddar</span>
+                        <span>4 SR</span>
+                    </div>
+                    <div class="addon-item">
+                        <span>Haloumi</span>
+                        <span>4 SR</span>
+                    </div>
+                    <div class="addon-item">
+                        <span>Cream Chz</span>
+                        <span>4 SR</span>
+                    </div>
+                    <div class="addon-item">
+                        <span>Tomato</span>
+                        <span>4 SR</span>
+                    </div>
+                    <div class="addon-item">
+                        <span>Spicy Sc</span>
+                        <span>4 SR</span>
+                    </div>
+                    <div class="addon-item">
+                        <span>Sauce</span>
+                        <span>4 SR</span>
+                    </div>
+                    <div class="addon-item">
+                        <span>Margarita</span>
+                        <span>4 SR</span>
+                    </div>
+                    <div class="addon-item">
+                        <span>Pomegranate</span>
+                        <span>2 SR</span>
+                    </div>
+                    <div class="addon-item">
+                        <span>Meat</span>
+                        <span>6 SR</span>
+                    </div>
+                    <div class="addon-item">
+                        <span>Zaatar</span>
+                        <span>4 SR</span>
+                    </div>
+                    <div class="addon-item">
+                        <span>Labneh</span>
+                        <span>4 SR</span>
+                    </div>
+                    <div class="addon-item">
+                        <span>Veg</span>
+                        <span>4 SR</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DRINKS -->
+            <div class="box">
+                <div class="box-title">Drinks</div>
+                <div class="drinks-grid">
+                    <div class="drink-item">
+                        <span>Water</span>
+                        <span>1 SR</span>
+                    </div>
+                    <div class="drink-item">
+                        <span>Cold-drinks</span>
+                        <span>1 SR</span>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- END COLUMN 3 -->
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <div class="footer-section">
+                <div class="footer-title">Contact</div>
+                <div class="footer-info">Bliss: 01374366</div>
+            </div>
+            <div class="footer-section">
+                <div class="footer-title">Thank You!</div>
+                <div class="footer-info">Visit Again Soon</div>
+            </div>
+            <div class="footer-section">
+                <div class="footer-title">Follow Us</div>
+                <div class="footer-info">@najmasabahiya</div>
+            </div>
+        </div>
+
+    </div> <!-- END MENU CONTAINER -->
+
+</body>
+</html>
